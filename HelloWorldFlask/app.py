@@ -2,11 +2,11 @@ import connexion
 from flask import Flask
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-    return 'Hello, World'
+#@app.route('/<name>')
+def post_greeting(name):
+    return "hello {}".format(name),200
 
-
-app = connexion.App(__name__)
-app.add_api('swagger.yaml')
-app.run(port=8080)
+if __name__ == '__main__':
+    app = connexion.App(__name__, 9090)
+    app.add_api('swagger.yaml')
+    app.run()

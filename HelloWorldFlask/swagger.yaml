@@ -6,7 +6,7 @@ info:
 
 paths:
   /hello/{name}:
-    post:
+    get:
       summary: Says hello to the username given in the path
       description: Generates a greeting message.
       operationId: app.post_greeting
