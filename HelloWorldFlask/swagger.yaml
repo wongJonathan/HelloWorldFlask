@@ -25,3 +25,16 @@ paths:
           description: Name of the person to greet.
           required: true
           type: string
+  /hello/world:
+    get:
+      summary: Just prints "Hello World"
+      operationId: app.post_world
+      produces:
+        - text/plain;
+      responses:
+        200:
+          description: greeting response
+          schema:
+            type: string
+          examples:
+            "text/plain": "Hello John"
