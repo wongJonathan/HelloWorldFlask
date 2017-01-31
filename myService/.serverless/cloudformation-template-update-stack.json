@@ -2,14 +2,14 @@
   "AWSTemplateFormatVersion": "2010-09-09",
   "Description": "The AWS CloudFormation template for this Serverless application",
   "Resources": {
-    "PostUnderscoreworldLambdaFunction": {
+    "HelloLambdaFunction": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
         "Code": {
           "S3Bucket": "us-west-2--mclass--serverless--dev",
-          "S3Key": "serverless/jwong-HelloWorld/dev/1485805868367-2017-01-30T19:51:08.367Z/jwong-HelloWorld.zip"
+          "S3Key": "serverless/jwong-HelloWorld/dev/1485811923495-2017-01-30T21:32:03.495Z/jwong-HelloWorld.zip"
         },
-        "FunctionName": "jwong-HelloWorld-dev-post_world",
+        "FunctionName": "jwong-HelloWorld-dev-hello",
         "Handler": "wsgi.handler",
         "MemorySize": 256,
         "Role": "arn:aws:iam::646102706174:role/disco_dev_testillery_lambda",
@@ -17,14 +17,14 @@
         "Timeout": 6
       }
     },
-    "PostUnderscoreworldLambdaVersionY7sbQMAxYgEiQi5w85mKAYZA0lJE3bGkvV3gYmyVg": {
+    "HelloLambdaVersionws8Ae7wa4H50IPbHgePHyOIvqPpGx7xHmXxog9Z45h8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
-          "Ref": "PostUnderscoreworldLambdaFunction"
+          "Ref": "HelloLambdaFunction"
         },
-        "CodeSha256": "Y7sbQMAxYgEiQi5w85/mKAYZA0lJE3bGkvV3+gYmyVg="
+        "CodeSha256": "ws8Ae7wa4H50IPbHgePHyOIvqPpGx7xHmXxog9Z45h8="
       }
     },
     "ApiGatewayRestApi": {
@@ -74,7 +74,7 @@
                 ":lambda:path/2015-03-31/functions/",
                 {
                   "Fn::GetAtt": [
-                    "PostUnderscoreworldLambdaFunction",
+                    "HelloLambdaFunction",
                     "Arn"
                   ]
                 },
@@ -86,7 +86,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1485805868388": {
+    "ApiGatewayDeployment1485811923530": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -98,12 +98,12 @@
         "ApiGatewayMethodProxyVarGet"
       ]
     },
-    "PostUnderscoreworldLambdaPermissionApiGateway": {
+    "HelloLambdaPermissionApiGateway": {
       "Type": "AWS::Lambda::Permission",
       "Properties": {
         "FunctionName": {
           "Fn::GetAtt": [
-            "PostUnderscoreworldLambdaFunction",
+            "HelloLambdaFunction",
             "Arn"
           ]
         },
@@ -136,19 +136,19 @@
     "ServerlessDeploymentBucketName": {
       "Value": "us-west-2--mclass--serverless--dev"
     },
-    "PostUnderscoreworldLambdaFunctionArn": {
+    "HelloLambdaFunctionArn": {
       "Description": "Lambda function info",
       "Value": {
         "Fn::GetAtt": [
-          "PostUnderscoreworldLambdaFunction",
+          "HelloLambdaFunction",
           "Arn"
         ]
       }
     },
-    "PostUnderscoreworldLambdaFunctionQualifiedArn": {
+    "HelloLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "PostUnderscoreworldLambdaVersionY7sbQMAxYgEiQi5w85mKAYZA0lJE3bGkvV3gYmyVg"
+        "Ref": "HelloLambdaVersionws8Ae7wa4H50IPbHgePHyOIvqPpGx7xHmXxog9Z45h8"
       }
     },
     "ServiceEndpoint": {

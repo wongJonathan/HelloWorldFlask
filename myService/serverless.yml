@@ -30,7 +30,7 @@ provider:
 
 
 functions:
-  post_world:
+  hello:
     handler: wsgi.handler
     events:
       - http: GET {proxy+}
