@@ -5,22 +5,22 @@ info:
   version: "1.0"
 
 paths:
-  /:
+  /hello:
     get:
       summary: Just prints "Hello World"
-      operationId: app.get_world
+      operationId: app.my_form
       produces:
-        - text/plain;
+        - text/html;
       responses:
         200:
           description: greeting response
           schema:
             type: string
           examples:
-            "text/plain": "Hello World"
+            "text/html": "Hello World"
     post:
       summary: Post version of hello world
-      operationId: app.post_world
+      operationId: app.my_form_post
       produces:
         - text/plain;
       responses:

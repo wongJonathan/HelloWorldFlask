@@ -1,10 +1,17 @@
 import connexion
+from flask import redirect,url_for, Flask,request, render_template
+mac = Flask(__name__)
 
-def get_world():
-    return "Hello World Get"
+@mac.route('/')
+def my_form():
+    return render_template("input.html")
 
-def post_world():
-    return "Hello World Post"
+@mac.route('/', methods=['POST'])
+def my_form_post():
+
+    text = request.form['text']
+    processed_text = text.upper()
+    return processed_text
 
 app = connexion.App(__name__, 9090)
 app.add_api('swagger.yaml')

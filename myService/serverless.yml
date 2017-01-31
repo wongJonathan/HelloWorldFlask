@@ -33,7 +33,12 @@ functions:
   hello:
     handler: wsgi.handler
     events:
-      - http: GET {proxy+}
+      - http:
+          path: hello
+          method: get
+      - http:
+          path: hello/create
+          method: post
 custom:
   wsgi:
     app: app.app
