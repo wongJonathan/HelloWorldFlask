@@ -5,9 +5,21 @@ info:
   version: "1.0"
 
 paths:
-  /hello:
+  /:
     get:
       summary: Just prints "Hello World"
+      operationId: app.get_world
+      produces:
+        - text/plain;
+      responses:
+        200:
+          description: greeting response
+          schema:
+            type: string
+          examples:
+            "text/plain": "Hello World"
+    post:
+      summary: Post version of hello world
       operationId: app.post_world
       produces:
         - text/plain;
@@ -17,4 +29,4 @@ paths:
           schema:
             type: string
           examples:
-            "text/plain": "Hello John"
+            "text/plain": "Hello World"
