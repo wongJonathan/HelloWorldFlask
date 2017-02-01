@@ -7,26 +7,55 @@ info:
 paths:
   /hello:
     get:
-      summary: Just prints "Hello World"
-      operationId: app.my_form
-      produces:
-        - text/html;
+      summary: Prints all the keys
+      operationId: app.print_keys
       responses:
         200:
-          description: greeting response
+          description: All keys are printed
           schema:
             type: string
           examples:
             "text/html": "Hello World"
-    post:
+    put:
       summary: Post version of hello world
-      operationId: app.my_form_post
-      produces:
-        - text/plain;
+      operationId: app.add_key
+      parameters:
+        - name: key
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Key'
       responses:
         200:
-          description: greeting response
+          description: creates a key/value
+  /hello/{name}:
+    get:
+      summary: Returns name and value for the given key
+      operationId: app.get_key
+      parameters:
+        - name: name
+          in: path
+          required: true
+          type: string
+      responses:
+        200:
+          description: Finds a key
           schema:
-            type: string
-          examples:
-            "text/plain": "Hello World"
+            $ref: '#/definitions/Key'
+        404:
+          description: Key does not exist
+
+definitions:
+  Key:
+    type: object
+    required:
+      - name
+      - value
+    properties:
+      name:
+        type: string
+        description: name of the key
+        readOnly: true
+      value:
+        type: string
+        description:  value of the key

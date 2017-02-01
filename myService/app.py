@@ -1,17 +1,20 @@
 import connexion
-from flask import redirect,url_for, Flask,request, render_template
-mac = Flask(__name__)
+KEYS = {}
 
-@mac.route('/')
-def my_form():
-    return render_template("input.html")
+def print_keys():
+    return KEYS
 
-@mac.route('/', methods=['POST'])
-def my_form_post():
+# Basically you're going to take the parameters and add it to a dictionary or list
+# then return it's been made
+# Parameters are coming from swagger.
+def add_key(key):
+    print(key['name'])
+    KEYS[key['name']]=key['value']
+    return 200
 
-    text = request.form['text']
-    processed_text = text.upper()
-    return processed_text
+def get_key(name):
+    value = KEYS.get(name)
+    return "Name: %s Value: %s" % (name,value)
 
 app = connexion.App(__name__, 9090)
 app.add_api('swagger.yaml')
